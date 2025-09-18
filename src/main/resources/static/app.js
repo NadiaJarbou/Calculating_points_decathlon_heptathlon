@@ -74,7 +74,13 @@ async function renderStandings() {
         <td>${r.scores?.["100m"] ?? ''}</td>
         <td>${r.scores?.["longJump"] ?? ''}</td>
         <td>${r.scores?.["shotPut"] ?? ''}</td>
+        <td>${r.scores?.["highJump"] ?? ''}</td>
         <td>${r.scores?.["400m"] ?? ''}</td>
+        <td>${r.scores?.["110mHurdles"] ?? ''}</td>
+        <td>${r.scores?.["discus"] ?? ''}</td>
+        <td>${r.scores?.["poleVault"] ?? ''}</td>
+        <td>${r.scores?.["javelin"] ?? ''}</td>
+        <td>${r.scores?.["1500m"] ?? ''}</td>
         <td>${r.total ?? 0}</td>
       </tr>`).join('');
 
