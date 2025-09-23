@@ -14,6 +14,16 @@
   </style>
 </head>
 <body>
+<div class="card">
+    <h2>Mode</h2>
+    <div class="row">
+        <label for="mode">Disciplin</label>
+        <select id="mode" data-testid="modeSelect">
+            <option value="DEC">Decathlon</option>
+            <option value="HEP">Heptathlon</option>
+        </select>
+    </div>
+</div>
 <h1>Decathlon Web MVP</h1>
 
 <div class="card">
@@ -21,7 +31,7 @@
     <div class="row">
         <label for="name">Name</label>
         <input id="name" data-testid="competitorNameInput" placeholder="e.g., Anna" />
-        <button id="add" data-testid="addCompetitorBtn">Add competitor</button>
+        <button type="button" id="add" data-testid="addCompetitorBtn">Add competitor</button>
     </div>
     <div id="error" data-testid="errorBanner" aria-live="polite"></div>
 </div>
