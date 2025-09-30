@@ -26,13 +26,13 @@ public class ExcelPrinter {
 		int rowCount = 0;
 
 		for (Object[] aBook : data) {
-			Row row = sheet.createRow(rowCount);
-			rowCount++;
+			Row row = sheet.createRow(rowCount++);
+
 			int columnCount = 0;
 
 			for (Object field : aBook) {
-				Cell cell = row.createCell(columnCount);
-				columnCount++;
+				Cell cell = row.createCell(columnCount++);
+
 				
 				if (field instanceof String) {
 					cell.setCellValue((String) field);

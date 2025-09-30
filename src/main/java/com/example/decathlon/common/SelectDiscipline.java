@@ -2,16 +2,7 @@ package com.example.decathlon.common;
 
 import java.util.Scanner;
 
-import com.example.decathlon.deca.Deca100M;
-import com.example.decathlon.deca.Deca1500M;
-import com.example.decathlon.deca.Deca110MHurdles;
-import com.example.decathlon.deca.Deca400M;
-import com.example.decathlon.deca.DecaDiscusThrow;
-import com.example.decathlon.deca.DecaHighJump;
-import com.example.decathlon.deca.DecaJavelinThrow;
-import com.example.decathlon.deca.DecaLongJump;
-import com.example.decathlon.deca.DecaShotPut;
-import com.example.decathlon.deca.DecaPoleVault;
+import com.example.decathlon.deca.*;
 
 import com.example.decathlon.heptathlon.Hep100MHurdles;
 import com.example.decathlon.heptathlon.Hep200M;
@@ -66,63 +57,67 @@ public class SelectDiscipline {
 
 	// Check input of discipline.
 	public void makeSelection() {
-		switch (disciplineSelected) {
-		case 1:
-			deca100M.calculateResult(inputResult.enterResult());
-			break;
-		case 2:
-			deca400M.calculateResult(inputResult.enterResult());
-			break;
-		case 3:
-			deca110MHurdles.calculateResult(inputResult.enterResult());
-			break;
-		case 4:
-			deca1500M.calculateResult(inputResult.enterResult());
-			break;
-		case 5:			
-			decaLongJump.calculateResult(inputResult.enterResult());
-			break;
-		case 6:
-			highJump.calculateResult(inputResult.enterResult());
-			break;
-		case 7:
-			poleVault.calculateResult(inputResult.enterResult());
-			break;
-		case 8:
-			discusThrow.calculateResult(inputResult.enterResult());
-			break;
-		case 9:
-			decaJavelinThrow.calculateResult(inputResult.enterResult());
-			break;
-		case 10:
-			decaShotPut.calculateResult(inputResult.enterResult());
-			break;
-		case 11:
-			hep200M.calculateResult(inputResult.enterResult());
-			break;
-		case 12:
-			hep800M.calculateResult(inputResult.enterResult());
-			break;
-		case 13:
-			hep100MHurdles.calculateResult(inputResult.enterResult());
-			break;
-		case 14:
-			hepHighJump.calculateResult(inputResult.enterResult());
-			break;
-		case 15:
-			hepLongJump.calculateResult(inputResult.enterResult());
-			break;
-		case 16:
-			hepShotPut.calculateResult(inputResult.enterResult());
-			break;
-		case 17:
-			hepJavelinThrow.calculateResult(inputResult.enterResult());
-			break;
-		default:
-			System.out.println("Invalid input, try again.");
-			System.out.println("");
-			inputSelection();
-			break;
+		try {
+			switch (disciplineSelected) {
+				case 1:
+					deca100M.calculateResult(inputResult.enterResult());
+					break;
+				case 2:
+					deca400M.calculateResult(inputResult.enterResult());
+					break;
+				case 3:
+					deca110MHurdles.calculateResult(inputResult.enterResult());
+					break;
+				case 4:
+					deca1500M.calculateResult(inputResult.enterResult());
+					break;
+				case 5:
+					decaLongJump.calculateResult(inputResult.enterResult());
+					break;
+				case 6:
+					highJump.calculateResult(inputResult.enterResult());
+					break;
+				case 7:
+					poleVault.calculateResult(inputResult.enterResult());
+					break;
+				case 8:
+					discusThrow.calculateResult(inputResult.enterResult());
+					break;
+				case 9:
+					decaJavelinThrow.calculateResult(inputResult.enterResult());
+					break;
+				case 10:
+					decaShotPut.calculateResult(inputResult.enterResult());
+					break;
+				case 11:
+					hep200M.calculateResult(inputResult.enterResult());
+					break;
+				case 12:
+					hep800M.calculateResult(inputResult.enterResult());
+					break;
+				case 13:
+					hep100MHurdles.calculateResult(inputResult.enterResult());
+					break;
+				case 14:
+					hepHighJump.calculateResult(inputResult.enterResult());
+					break;
+				case 15:
+					hepLongJump.calculateResult(inputResult.enterResult());
+					break;
+				case 16:
+					hepShotPut.calculateResult(inputResult.enterResult());
+					break;
+				case 17:
+					hepJavelinThrow.calculateResult(inputResult.enterResult());
+					break;
+				default:
+					System.out.println("Invalid input, try again.");
+					System.out.println("");
+					inputSelection();
+					break;
+			}
+		} catch (InvalidResultException ex) {
+			System.out.println("Invalid Result");
 		}
 	}
 
