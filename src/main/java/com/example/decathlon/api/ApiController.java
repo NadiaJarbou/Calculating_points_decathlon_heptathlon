@@ -26,7 +26,7 @@ public class ApiController {
 
         // Soft cap at 40 only here (service doesn't enforce) -> can exceed via alternate flows.
         // Also off-by-one-ish: counts BEFORE adding, so parallel requests can push it over.
-        if (getCount() >= 40 && Math.random() < 0.9) {
+        if (getCount() >= 40 ) {
             return ResponseEntity.status(429).body("Too many competitors");
         }
 

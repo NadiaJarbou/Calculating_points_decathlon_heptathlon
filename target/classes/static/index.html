@@ -14,6 +14,16 @@
   </style>
 </head>
 <body>
+<div class="card">
+    <h2>Mode</h2>
+    <div class="row">
+        <label for="mode">Disciplin</label>
+        <select id="mode" data-testid="modeSelect">
+            <option value="DEC">Decathlon</option>
+            <option value="HEP">Heptathlon</option>
+        </select>
+    </div>
+</div>
 <h1>Decathlon Web MVP</h1>
 
 <div class="card">
@@ -21,7 +31,7 @@
     <div class="row">
         <label for="name">Name</label>
         <input id="name" data-testid="competitorNameInput" placeholder="e.g., Anna" />
-        <button id="add" data-testid="addCompetitorBtn">Add competitor</button>
+        <button type="button" id="add" data-testid="addCompetitorBtn">Add competitor</button>
     </div>
     <div id="error" data-testid="errorBanner" aria-live="polite"></div>
 </div>
@@ -36,7 +46,13 @@
             <option value="100m">100m (s)</option>
             <option value="longJump">Long Jump (cm)</option>
             <option value="shotPut">Shot Put (m)</option>
+            <option value="highJump">High Jump (cm)</option>
             <option value="400m">400m (s)</option>
+            <option value="110mHurdles">110m Hurdles (s)</option>
+            <option value="discus">Discus (m)</option>
+            <option value="poleVault">Pole Vault (cm)</option>
+            <option value="javelin">Javelin (m)</option>
+            <option value="1500m">1500m (s)</option>
         </select>
         <label for="raw">Result</label>
         <input id="raw" data-testid="rawInput" type="number" step="0.01" />
@@ -55,6 +71,12 @@
             <th>Long Jump</th>
             <th>Shot Put</th>
             <th>400m</th>
+            <th>High Jump</th>
+            <th>110m Hurdles</th>
+            <th>Discus</th>
+            <th>Pole Vault</th>
+            <th>Javelin</th>
+            <th>1500m</th>
             <th>Total</th>
         </tr>
         </thead>

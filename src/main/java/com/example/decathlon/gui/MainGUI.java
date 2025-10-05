@@ -160,56 +160,62 @@ public class MainGUI {
             String discipline = (String) disciplineBox.getSelectedItem();
             String mode = (String) modeBox.getSelectedItem();
 
-            try {
-                double result = Double.parseDouble(resultField.getText());
-                int score = 0;
-
+            if(tableModel.getRowCount()>=40){
+                JOptionPane.showMessageDialog(null,"Too many competitors", "Error", JOptionPane.INFORMATION_MESSAGE);
+            } else{
                 try {
-                    if (MODE_DEC.equals(mode)) {
-                        switch (discipline) {
-                            case "100m":            score = new Deca100M().calculateResult(result); break;
-                            case "400m":            score = new Deca400M().calculateResult(result); break;
-                            case "1500m":           score = new Deca1500M().calculateResult(result); break;
-                            case "110m Hurdles":    score = new Deca110MHurdles().calculateResult(result); break;
-                            case "Long Jump":       score = new DecaLongJump().calculateResult(result); break;
-                            case "High Jump":       score = new DecaHighJump().calculateResult(result); break;
-                            case "Pole Vault":      score = new DecaPoleVault().calculateResult(result); break;
-                            case "Discus Throw":    score = new DecaDiscusThrow().calculateResult(result); break;
-                            case "Javelin Throw":   score = new DecaJavelinThrow().calculateResult(result); break;
-                            case "Shot Put":        score = new DecaShotPut().calculateResult(result); break;
+                    double result = Double.parseDouble(resultField.getText());
+                    int score = 0;
+
+                    try {
+                        if (MODE_DEC.equals(mode)) {
+                            switch (discipline) {
+                                case "100m":            score = new Deca100M().calculateResult(result); break;
+                                case "400m":            score = new Deca400M().calculateResult(result); break;
+                                case "1500m":           score = new Deca1500M().calculateResult(result); break;
+                                case "110m Hurdles":    score = new Deca110MHurdles().calculateResult(result); break;
+                                case "Long Jump":       score = new DecaLongJump().calculateResult(result); break;
+                                case "High Jump":       score = new DecaHighJump().calculateResult(result); break;
+                                case "Pole Vault":      score = new DecaPoleVault().calculateResult(result); break;
+                                case "Discus Throw":    score = new DecaDiscusThrow().calculateResult(result); break;
+                                case "Javelin Throw":   score = new DecaJavelinThrow().calculateResult(result); break;
+                                case "Shot Put":        score = new DecaShotPut().calculateResult(result); break;
+                            }
+                        } else {
+                            switch (discipline) {
+                                case "100m Hurdles":    score = new Hep100MHurdles().calculateResult(result); break;
+                                case "High Jump":       score = new HeptHightJump().calculateResult(result); break;
+                                case "Shot Put":        score = new HeptShotPut().calculateResult(result); break;
+                                case "200m":            score = new Hep200M().calculateResult(result); break;
+                                case "Long Jump":       score = new HeptLongJump().calculateResult(result); break;
+                                case "Javelin Throw":   score = new HeptJavelinThrow().calculateResult(result); break;
+                                case "800m":            score = new Hep800M().calculateResult(result); break;
+                            }
                         }
-                    } else {
-                        switch (discipline) {
-                            case "100m Hurdles":    score = new Hep100MHurdles().calculateResult(result); break;
-                            case "High Jump":       score = new HeptHightJump().calculateResult(result); break;
-                            case "Shot Put":        score = new HeptShotPut().calculateResult(result); break;
-                            case "200m":            score = new Hep200M().calculateResult(result); break;
-                            case "Long Jump":       score = new HeptLongJump().calculateResult(result); break;
-                            case "Javelin Throw":   score = new HeptJavelinThrow().calculateResult(result); break;
-                            case "800m":            score = new Hep800M().calculateResult(result); break;
-                        }
+                    } catch (InvalidResultException ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Invalid Result", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
-                } catch (InvalidResultException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Invalid Result", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
 
-                outputArea.append("Mode: " + mode + "\n");
-                outputArea.append("Competitor: " + name + "\n");
-                outputArea.append("Discipline: " + discipline + "\n");
-                outputArea.append("Result: " + result + "\n");
-                outputArea.append("Score: " + score + "\n\n");
+                    outputArea.append("Mode: " + mode + "\n");
+                    outputArea.append("Competitor: " + name + "\n");
+                    outputArea.append("Discipline: " + discipline + "\n");
+                    outputArea.append("Result: " + result + "\n");
+                    outputArea.append("Score: " + score + "\n\n");
 
-                ensureRowExists(name);
-                int row = findRowByName(name);
-                int col = eventColumnIndex(discipline);
-                if (row != -1 && col != -1) {
-                    tableModel.setValueAt(score, row, col);
-                    recalcTotal(row);
+                    ensureRowExists(name);
+                    int row = findRowByName(name);
+                    int col = eventColumnIndex(discipline);
+                    if (row != -1 && col != -1) {
+                        tableModel.setValueAt(score, row, col);
+                        recalcTotal(row);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid number for the result.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Please enter a valid number for the result.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             }
+
+
         }
     }
 
