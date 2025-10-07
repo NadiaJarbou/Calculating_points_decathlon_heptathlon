@@ -63,7 +63,7 @@ public class MainGUI {
         panel.add(new JLabel("Enter Result:"));
         panel.add(resultField);
 
-        JButton calculateButton = new JButton("Calculate Score");
+        JButton calculateButton = new JButton("Save Score");
         JButton exportButton = new JButton("Export to Excel");
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         buttons.add(calculateButton);
